@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> {{ user.username }} &middot; Manage Health </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Simplex</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='happysad.css') }}">
+
+    <link href="{{ url_for('static', filename='css/style.css') }} " rel="stylesheet" type="text/css" media="all" />
+    <!-- <link href='//fonts.googleapis.com/css?family=Romanesco' rel='stylesheet' type='text/css'> -->
+    <!--//web-fonts-->
+    <!--Calender-->
+    <script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/clndr.css') }}" type="text/css" />
+    <script src="{{ url_for('static', filename='js/underscore-min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/moment-2.2.1.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/clndr.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/site.js') }}"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+        </div>
+        <div class="user_img">
+        </div>
+        <div class="user_stat_base">
+            <p class="name">{{ user.name }} <span class="status"></span></p>
+            <p class="detail">
+                {{ user.age|round|int }} years old, {{ user.gender }}
+            </p>
+        </div>
+        <div class="main_nav">
+            <ul>
+                <li><a href="{{ url_for('profile') }}">My Profile</a></li>
+                <li><a href="{{ url_for('panel') }}">Mood Calender</a></li>
+                <!-- <li><a href="#0">Medical Treatment</a></li>
+                <li><a href="#0">Recent Appointments</a></li>
+                 --><li><a href="{{ url_for('graph') }}">Technical Reports</a></li>
+                 <li><a href="{{ url_for('suggestions') }}">Get Suggestions</a></li>
+                <li><a href="{{ url_for('facialExpression') }}">Facial Expression</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </div>
+
+        <hr>
+        <div class="buttons">
+            <a href="{{ url_for('static', filename=user.filename) }}" target="_blank" class="req">Request Report</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="{{ url_for('downloaddata') }}" class="req line">Download Data</a>
+        </div>
+    </nav>
+    <div class="main_dash">
+        <div class="greet">
+            <h1>Hey there, {{ user.name }}</h1>
+            <p class="lead">
+                Your recent report, <span class="recent">#PP_LMAO69</span> has been <span class="ev" style=" background: #2ecc71  !important;color:#fff; ">evaluated.</span>
+            </p>
+        </div>
+    {% if prediction %}
+    <div class="happy">
+        <div class="icon__happy"></div>
+        <div class="details">
+            Good going! You're going to be <span>happy</span> tomorrow.
+            <p class="copy">There's a {{ percent }}% chance of you wanna party.</p>
+        </div>
+    </div>
+
+    {% else %}
+    <div class="happy">
+        <div class="icon__sad"></div>
+        <div class="details">
+            Cheer up! Tomorrow seems a little <span>down</span> for you.
+            <p class="copy">There's a {{ percent }}% chance of you being low.</p>
+     </div>
+    </div>
+    {% endif %}
+
+        <!--
+        <div class="dabba_reports">
+            <h1>124</h1>
+            <p class="lead">
+                Reports evaluated
+                <span class="cite">10 new available</span>
+            </p>
+        </div> --><!--
+        <div class="dabba_reports two">
+            <h1>2</h1>
+            <p class="lead">
+                Appointments
+                <span class="cite">next week</span>
+            </p>
+        </div>
+        <div class="dabba_reports three">
+            <h1>$124</h1>
+            <p class="lead">
+                Therapy cost
+                <span class="cite">due tomorrow</span>
+            </p>
+        </div> --><!--
+        <div class="half_dabba">
+            <h1>Weekly Statistics</h1>
+            <h3>Calculated for last 10 days</h3>
+            <img src="{{ url_for('static', filename=user.filename) }}">
+        </div>
+ -->
+        <div class="half_dabba">
+        <div class="main">
+            <div class="calnder">
+                <div class="column_right_grid calender">
+                    <script type="text/javascript" src="{{ url_for('static', filename='js/modernizr.custom.min.js') }}"></script>
+                    <link href="{{ url_for('static', filename='css/popuo-box.css') }}" rel="stylesheet" type="text/css" media="all" />
+                    <script src="{{ url_for('static', filename='js/jquery.magnific-popup.js') }}" type="text/javascript"></script>
+                    <!-- //pop-up-box -->
+                    <div id="small-dialog" class="mfp-hide">
+                        <div class="event-text">
+                            <form>
+                                <input type="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}" />
+                                <input type="date" value="Select date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Select date';}" />
+                                <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message..</textarea>
+                                <input type="submit" value="Add">
+                            </form>
+                        </div>
+                    </div>
+                    <h1 class="cal_head" style="font-family: Circular;
+    font-family: Circular;
+    text-align: center;
+    padding-bottom: 34px;
+    font-size: 2.444rem;
+    color: #202020;">Mood Calendar</h1>
+                    <div class="cal1"><div class="clndr"><div class="clndr-controls"><div class="clndr-control-button"><p class="clndr-previous-button">previous</p></div><div class="month">September 2018</div><div class="clndr-control-button rightalign"><p class="clndr-next-button">next</p></div></div><table class="clndr-table" border="0" cellspacing="0" cellpadding="0"><thead><tr class="header-days"><td class="header-day">S</td><td class="header-day">M</td><td class="header-day">T</td><td class="header-day">W</td><td class="header-day">T</td><td class="header-day">F</td><td class="header-day">S</td></tr></thead><tbody><tr>
+
+                        <td class="day past {% if scores['scores'][0]==0 %} red {% else %} green {% endif %} calendar-day-2018-09-01">
+                        <div class="day-contents">1</div></td>
+
+                        <td class="day past {% if scores['scores'][1]==0 %} red {% else %} green {% endif %} calendar-day-2018-09-02">
+                        <div class="day-contents">2</div></td>
+
+                        <td class="day past {% if scores['scores'][2]==0 %} red {% else %} green {% endif %} calendar-day-2018-09-03">
+                        <div class="day-contents">3</div></td>
+
+                        <td class="day past {% if scores['scores'][3]==0 %} red {% else %} green {% endif %} calendar-day-2018-09-04">
+                        <div class="day-contents">4</div></td>
+
+                        <td class="day past {% if scores['scores'][4]==0 %} red {% else %} green {% endif %} calendar-day-2018-09-05">
+                        <div class="day-contents">5</div></td>
+
+                        <td class="day past {% if scores['scores'][5]==0 %} red {% else %} green {% endif %} calendar-day-2018-09-06">
+                        <div class="day-contents">6</div></td>
+
+                        <td class="day past {% if scores['scores'][6]==0 %} red {% else %} green {% endif %} calendar-day-2018-09-07">
+                        <div class="day-contents">7</div></td></tr><tr>
+
+                            <td class="day past {% if scores['scores'][7]==0 %} red {% else %} green {% endif %} calendar-day-2018-09-08">
+                        <div class="day-contents">8</div></td>
+
+                        <td class="day past {% if scores['scores'][8]==0 %} red {% else %} green {% endif %} calendar-day-2018-09-09">
+                        <div class="day-contents">9</div></td>
+                        <td class="day past {% if scores['scores'][9]==0 %} red {% else %} green {% endif %} event calendar-day-2018-09-10">
+                        <div class="day-contents">10</div></td>
+                        <td class="day {% if scores['scores'][10]==0 %} red {% else %} green {% endif %} event calendar-day-2018-09-11">
+                        <div class="day-contents">11</div></td>
+                        <td class="day event calendar-day-2018-09-12">
+                        <div class="day-contents">12</div></td>
+                        <td class="day event calendar-day-2018-09-13">
+                        <div class="day-contents">13</div></td>
+                        <td class="day event calendar-day-2018-09-14">
+                        <div class="day-contents">14</div></td></tr><tr>
+
+                            <td class="day calendar-day-2018-09-15">
+                        <div class="day-contents">15</div></td>
+                        <td class="day calendar-day-2018-09-16">
+                        <div class="day-contents">16</div></td>
+
+                        <td class="day calendar-day-2018-09-17">
+                        <div class="day-contents">17</div></td>
+
+                        <td class="day calendar-day-2018-09-18">
+                        <div class="day-contents">18</div></td>
+
+                        <td class="day calendar-day-2018-09-19">
+                        <div class="day-contents">19</div></td>
+
+                        <td class="day calendar-day-2018-09-20">
+                        <div class="day-contents">20</div></td>
+                        <td class="day event calendar-day-2018-09-21">
+                        <div class="day-contents">21</div></td></tr><tr>
+                            <td class="day event calendar-day-2018-09-22">
+                        <div class="day-contents">22</div></td>
+                        <td class="day event calendar-day-2018-09-23">
+                        <div class="day-contents">23</div></td>
+
+                        <td class="day calendar-day-2018-09-24">
+                        <div class="day-contents">24</div></td>
+
+                        <td class="day past calendar-day-2018-09-25">
+                        <div class="day-contents">25</div></td>
+
+                        <td class="day past calendar-day-2018-09-26">
+                        <div class="day-contents">26</div></td>
+
+                        <td class="day past calendar-day-2018-09-27">
+                        <div class="day-contents">27</div></td>
+                        <td class="day calendar-day-2018-09-28">
+                        <div class="day-contents">28</div></td></tr><tr>
+                            <td class="day calendar-day-2018-09-29">
+                        <div class="day-contents">29</div></td>
+                        <td class="day calendar-day-2018-09-30">
+                        <div class="day-contents">30</div></td>
+                        <td class="day calendar-day-2018-09-31">
+                        <div class="day-contents">31</div></td>
+                        <td class="day adjacent-month next-month calendar-day-2017-11-01">
+                        <div class="day-contents">1</div></td>
+                        <td class="day adjacent-month next-month calendar-day-2017-11-02">
+                        <div class="day-contents">2</div></td>
+                        <td class="day adjacent-month next-month calendar-day-2017-11-03">
+                        <div class="day-contents">3</div></td>
+                        <td class="day adjacent-month next-month calendar-day-2017-11-04">
+                        <div class="day-contents">4</div></td></tr></tbody></table></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

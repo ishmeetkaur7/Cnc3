@@ -1,0 +1,51 @@
+html,body {
+	background: #efefef;
+}
+
+.happy {
+	position: relative;
+	width: 700px;
+	margin-top: 60px;
+	left: 25%;
+	background: #fff;
+    padding: 30px 55px 55px 55px !important;
+    height: 130px;
+	-webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.0811);
+	box-shadow: 0 3px 5px rgba(0,0,0,0.0811);
+	border-radius: 5px;
+}
+
+.details {
+	padding-top: 25px;
+	font-size: 1.266rem;
+	float: right;
+	font-family: Circular, sans-serif;
+}
+
+.details > span {
+	padding-bottom: 5px;
+	border-bottom: 3px solid rgba(0,0,0,0.14444);
+}
+
+.icon__happy {
+	background: url(happy.png) center center no-repeat;
+	background-size: cover;
+	height: 64px;
+	width: 64px;
+	float: left;
+	top: 0;
+}
+
+.icon__sad {
+	background: url(sad.png) center center no-repeat;
+	background-size: cover;
+	height: 64px;
+	width: 64px;
+	float: left;
+	top: 0;
+}
+
+.copy {
+	font-size: 0.8rem;
+	color: rgba(0,0,0,0.169);
+}

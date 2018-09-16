@@ -1,0 +1,227 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    transition: all .35s ease-in-out;
+    padding: 0;
+}
+
+::selection {
+    background: rgba(#00adef, 0.44444);
+    color: #fff;
+}
+
+@font-face {
+    src: url(head.ttf);
+    font-family: Circular;
+}
+
+@font-face {
+    src: url(lyonitalice.ttf);
+    font-family: LyonItalic;
+}
+
+@font-face {
+    src: url(apercu.ttf);
+    font-family: Apercu;
+}
+
+html,
+body {
+    background: #efefef; 
+    font-size: 100%;
+    font-family: Apercu;
+    color: #222;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility !important;
+}
+
+body {
+    font-family: Apercu;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: Circular;
+    font-weight: normal;
+}
+
+nav {
+    height: 100vh;
+    width: 25%;
+    position: fixed;
+    background: #2c3e50;
+    .user_img {
+        background: url(user.jpg) center center no-repeat;
+        background-size: cover;
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        bottom: 0;
+        margin: 30px 10px 10px 40px;
+        border-radius: 50%;
+    }
+    .user_stat_base {
+        position: absolute;
+        bottom: 0;
+        margin: 20px 20px 20px 130px;
+        .name {
+            font-family: Circular;
+            font-size: 1.222rem;
+            color: #fff;
+            letter-spacing: .2pt;
+            line-height: 1.5555;
+        }
+        .detail {
+            font-size: 0.89rem;
+            color: rgba(#fff, 0.69);
+        }
+    }
+    ul {
+        margin: 150px 0px 20px 50px;
+        li {
+            list-style-type: none;
+            line-height: 1.88;
+            a {
+                color: rgba(#fff,0.666);
+                text-decoration: none;
+                font-family: Circular;
+                font-weight: normal;
+                font-size: 1.23rem;
+                border-bottom: 2px solid transparent;
+                &:hover {
+                    color: rgba(#fff, 1); 
+                    border-bottom: 2px solid rgba(#fff, 0.5);
+                }
+            }
+        }
+    }
+}
+
+hr {
+    width: 75%;
+    height: 3px;
+    outline: none;
+    border: none;
+    margin-left: 50px; 
+    background: rgba(#fff, .19);
+}
+.main_dash {
+    float: right;
+    height: 100vh;
+    width: 75%;
+    // background: rgba(#2c3e50, .97);
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+    background: rgba(#fff, 0.22);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    margin: 40px; 
+}
+
+.status {
+    position: absolute;
+    background: #2ecc71;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    margin: 15px 5px;    
+}
+
+.req {
+    background: #2ecc71;
+    color: #fff;
+    position:relative;
+    text-decoration: none;
+    padding: 15px 25px;
+    top: 40px;
+    left: 40px;
+    text-transform: uppercase;
+    font-size: 8pt;
+    letter-spacing: 2pt;
+    border-radius: 30px;
+}
+
+.line{
+    background: transparent;
+    padding: 15px 17px;
+    border: 2px solid #2ecc71;
+    &:hover {
+        background: rgba(#2ecc71, 0.08);
+    }
+}
+
+.greet {
+    box-shadow: 0 0 1px rgba(0,0,0,.15);
+
+    // height: 25%;
+    width: 100%;
+    padding: 5rem 3rem;
+    background: #fff;
+    // background: rgba(#34495e, 1);
+    h1 {
+        color: rgba(#222, 1);
+        font-size: 2.5rem; 
+        margin-bottom: 10px;
+    }
+    p.lead {
+        color: rgba(#222, 0.5);
+        .recent {
+            color: #222;
+        }
+    }
+}
+
+.dabba_reports {
+    h1 {
+        font-size: 2.5rem;
+    }
+    background: rgba(#fff, 1);
+    margin: 20px 10px;
+    position: absolute;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 0 1px rgba(0,0,0,.15);
+
+    &:hover {
+        box-shadow: 0 0 13px rgba(0,0,0,.15);
+    }
+}
+.two {
+    margin: 20px 0px 20px 360px; 
+    padding: 20px 40px;
+}
+.three {
+    margin: 20px 0px 20px 700px; 
+}
+.cite {
+    color: #666;
+    font-style: italic;
+}
+
+.half_dabba {
+    height: 300px;
+    width: 34%;
+    box-shadow: 0 0 1px rgba(0,0,0,.15);
+    background: #fff;
+    margin: 140px 10px 10px 10px;
+    padding:25px;
+    h1, h3 {
+        letter-spacing: -.2px;
+        font-family: Apercu;
+    }
+    h1 {
+        font-size: 1.22rem;
+    }
+    h3 {
+        font-size: 1rem;
+        color: #888;
+    }
+}

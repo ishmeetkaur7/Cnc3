@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> {{ user.username }} &middot; Manage Health </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Simplex</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='happysad.css') }}">
+
+    <link href="{{ url_for('static', filename='css/style.css') }} " rel="stylesheet" type="text/css" media="all" />
+    <!-- <link href='//fonts.googleapis.com/css?family=Romanesco' rel='stylesheet' type='text/css'> -->
+    <!--//web-fonts-->
+    <!--Calender-->
+    <script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/clndr.css') }}" type="text/css" />
+    <script src="{{ url_for('static', filename='js/underscore-min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/moment-2.2.1.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/clndr.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/site.js') }}"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+        </div>
+        <div class="user_img">
+        </div>
+        <div class="user_stat_base">
+            <p class="name">{{ user.name }} <span class="status"></span></p>
+            <p class="detail">
+                {{ user.age|round|int }} years old, {{ user.gender }}
+            </p>
+        </div>
+        <div class="main_nav">
+            <ul>
+                <li><a href="{{ url_for('profile') }}">My Profile</a></li>
+                <li><a href="{{ url_for('panel') }}">Mood Calender</a></li>
+                <!-- <li><a href="#0">Medical Treatment</a></li>
+                <li><a href="#0">Recent Appointments</a></li>
+                 --><li><a href="{{ url_for('graph') }}">Technical Reports</a></li>
+                 <li><a href="{{ url_for('suggestions') }}">Get Suggestions</a></li>
+                 <li><a href="{{ url_for('facialExpression') }}">Facial Expression</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </div>
+
+        <hr>
+        <div class="buttons">
+            <a href="{{ url_for('static', filename=user.filename) }}" target="_blank" class="req">Request Report</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="{{ url_for('downloaddata') }}" class="req line">Download Data</a>
+        </div>
+    </nav>
+    <div class="main_dash">
+        <div class="greet">
+            <h1>Hey there, {{ user.name }}</h1>
+            <p class="lead">
+                Upload your photo and get instant analysis </p> <br>
+                <form  method=POST enctype=multipart/form-data action="{{ url_for('facialExpression') }}">
+    <input class="buttons" type=file name=photo>
+    <input type="submit">
+</form>
+ </div>
+
+
+{% if txt1 %}
+    <div class="happy details" >
+
+        <!--<div class="details">-->
+            <!--Cheer up! You look a little <span>down</span> today.-->
+        <center>
+            <!--<div class="icon__sad"></div> <div class="icon__happy"></div> <br>-->
+            <strong> {{txt1}} <br> {{txt2}}<br> {{txt3}} <br> </strong> </center>
+
+     <!--</div>-->
+    </div>
+    <!--{% elif prediction==1 %}-->
+    <!--<div class="happy">-->
+        <!--<div class="icon__happy"></div>-->
+        <!--<div class="details">-->
+            <!--Good going! You seem pretty <span>happy</span> today.-->
+
+        <!--</div>-->
+    <!--</div>-->
+       {% else %}
+    <div class="happy">
+        <!--<div class="icon__happy"></div>-->
+        <center>
+            Upload Photo to see mood.
+
+        </center>
+    </div>
+    {% endif %}
+ </div>
+</body>
+</html>
